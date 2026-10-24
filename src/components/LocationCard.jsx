@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom'
+export default function LocationCard({ location }) { return <article className="location-card"><p className="eyebrow">{location.status}</p><h2>{location.name}</h2><p>{location.description}</p><p className="muted">{location.area} sq ft · {location.sunlight} sunlight · {location.water} water</p><Link className="button button-primary" to="/find-tree" state={{ locationName: location.name, area: location.area, sunlight: location.sunlight, water: location.water, purpose: location.purpose }}>Find suitable trees</Link></article> }

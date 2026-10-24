@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom'
+export default function TreeCard({ tree }) { return <article className="tree-card"><div className="tree-card-icon">🌳</div><h3>{tree.name}</h3><p className="scientific-name">{tree.scientificName}</p><p className="muted">Grows to {tree.matureHeight} · {tree.growthRate} growth</p><Link className="button button-primary" to={`/tree/${tree.id}`}>View details</Link></article> }
