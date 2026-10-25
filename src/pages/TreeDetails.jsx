@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { apiUrl } from '../utils/api.js'
 
 export default function TreeDetails() {
   const { id } = useParams()
@@ -18,7 +19,7 @@ export default function TreeDetails() {
       setNotFound(false)
 
       try {
-        const response = await fetch(`http://localhost:5000/api/trees/${encodeURIComponent(id)}`, { signal: controller.signal })
+        const response = await fetch(apiUrl(`/api/trees/${encodeURIComponent(id)}`), { signal: controller.signal })
         if (response.status === 404) {
           setNotFound(true)
         } else if (!response.ok) {

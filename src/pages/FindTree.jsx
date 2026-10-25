@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import RecommendationCard from '../components/RecommendationCard.jsx'
 import locations from '../data/locations.js'
+import { apiUrl } from '../utils/api.js'
 import { recommendTrees } from '../utils/recommendationEngine.js'
 import './FindTree.css'
 
@@ -37,7 +38,7 @@ export default function FindTree() {
 
     async function loadTrees() {
       try {
-        const response = await fetch('http://localhost:5000/api/trees', { signal: controller.signal })
+        const response = await fetch(apiUrl('/api/trees'), { signal: controller.signal })
         if (!response.ok) throw new Error('Unable to load trees. Please try again later.')
         const data = await response.json()
         if (!Array.isArray(data)) throw new Error('The server returned an invalid tree list.')
